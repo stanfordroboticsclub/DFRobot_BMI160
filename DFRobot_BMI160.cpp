@@ -776,7 +776,7 @@ int8_t DFRobot_BMI160::getRegs(uint8_t reg_addr, uint8_t *data, uint16_t len, st
     }else{
       rslt = DFRobot_BMI160::I2cGetRegs(dev, reg_addr, data, len);
     }
-    delay(1);
+    // delay(1);
     if (rslt != BMI160_OK){
       rslt = BMI160_E_COM_FAIL;  
     }
@@ -790,12 +790,12 @@ int8_t DFRobot_BMI160::I2cGetRegs(struct bmi160Dev *dev, uint8_t reg_addr, uint8
   Wire.beginTransmission(dev->id);
   Wire.write(reg_addr);
   Wire.endTransmission(true);
-  delay(10);
+  // delay(10);
   Wire.requestFrom(dev->id,len);
 
   for(int i = 0; i < len; i++){
     data[i]=Wire.read();
-    delay(1);
+    // delay(1);
   }
   return BMI160_OK;
 }
